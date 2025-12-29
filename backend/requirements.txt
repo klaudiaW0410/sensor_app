@@ -1,0 +1,7 @@
+Django>=5.0,<6.0
+djangorestframework
+django-ninja
+psycopg2-binary
+pytest
+pytest-django
+djangorestframework-simplejwt
