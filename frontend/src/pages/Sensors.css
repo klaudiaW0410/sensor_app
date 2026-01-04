@@ -1,0 +1,59 @@
+.container {
+  min-height: 50vh;
+  background-color: #f5f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid black 1px;
+  box-shadow: lightgrey 10px 10px 10px;
+  border-radius: 20px;
+  position: relative;
+
+}
+.page {
+  padding: 2rem;
+  width: 100%;
+  width: 420px; 
+}
+
+.sensor-filter {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.sensor-list {
+  list-style: none;
+  padding: 0;
+}
+
+.sensor-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.sensor-list li:last-child {
+  border-bottom: none;
+}
+
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

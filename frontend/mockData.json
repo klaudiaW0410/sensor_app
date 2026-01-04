@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin"
+    }
+  ],
+  "sensors": [
+    { "id": 1, "name": "device-001", "model": "EnviroSense" },
+    { "id": 2, "name": "device-002", "model": "ClimaTrack" },
+    { "id": 3, "name": "device-003", "model": "AeroMonitor" },
+    { "id": 4, "name": "device-004", "model": "HydroTherm" },
+    { "id": 5, "name": "device-005", "model": "EcoStat" }
+  ],
+  "readings": [
+    { "sensor_id": 1, "timestamp": "2024-08-01T10:58:00Z", "temperature": 24.09, "humidity": 46.17 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T10:59:00Z", "temperature": 24.49, "humidity": 46.51 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T11:00:00Z", "temperature": 24.28, "humidity": 44.71 },
+
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:00:00+00:00", "temperature": 23.75, "humidity": 45.29 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:01:00+00:00", "temperature": 23.46, "humidity": 46.46 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:02:00+00:00", "temperature": 23.57, "humidity": 44.51 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:03:00+00:00", "temperature": 23.54, "humidity": 45.78 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:04:00+00:00", "temperature": 23.55, "humidity": 46.57 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:05:00+00:00", "temperature": 24.01, "humidity": 45.54 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:06:00+00:00", "temperature": 23.49, "humidity": 45.59 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:07:00+00:00", "temperature": 23.28, "humidity": 45.25 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:08:00+00:00", "temperature": 24.11, "humidity": 45.35 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:09:00+00:00", "temperature": 24.14, "humidity": 45.52 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:10:00+00:00", "temperature": 24.25, "humidity": 45.39 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:11:00+00:00", "temperature": 24.2, "humidity": 45.58 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:12:00+00:00", "temperature": 23.83, "humidity": 45.77 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:13:00+00:00", "temperature": 24.11, "humidity": 45.44 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:14:00+00:00", "temperature": 24.34, "humidity": 45.12 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:15:00+00:00", "temperature": 24.14, "humidity": 46.11 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:16:00+00:00", "temperature": 24.07, "humidity": 44.94 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:17:00+00:00", "temperature": 24.57, "humidity": 44.74 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:18:00+00:00", "temperature": 24.23, "humidity": 45.25 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:19:00+00:00", "temperature": 24.43, "humidity": 45.28 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:20:00+00:00", "temperature": 24.46, "humidity": 45.6 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:21:00+00:00", "temperature": 23.74, "humidity": 45.61 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:22:00+00:00", "temperature": 25.01, "humidity": 43.95 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:23:00+00:00", "temperature": 24.06, "humidity": 45.32 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:24:00+00:00", "temperature": 24.02, "humidity": 45.81 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:25:00+00:00", "temperature": 24.22, "humidity": 45.9 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:26:00+00:00", "temperature": 24.41, "humidity": 46.14 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:27:00+00:00", "temperature": 24.27, "humidity": 46.33 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:28:00+00:00", "temperature": 23.45, "humidity": 45.14 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:29:00+00:00", "temperature": 24.15, "humidity": 44.91 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:30:00+00:00", "temperature": 24.54, "humidity": 45.89 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:31:00+00:00", "temperature": 24.04, "humidity": 46.22 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:32:00+00:00", "temperature": 24.7, "humidity": 46.35 },
+    { "sensor_id": 1, "timestamp": "2024-08-01T00:33:00+00:00", "temperature": 24.81, "humidity": 45.3 }
+  ]
+}
