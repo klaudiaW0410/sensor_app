@@ -1,13 +1,12 @@
-# backend/sensors/api.py
 from ninja import NinjaAPI
+from .api_auth import auth_router
+from .api_sensors import sensors_router
 
-api = NinjaAPI()
+api = NinjaAPI(
+    title="Sensor Management API",
+    version="1.0.0"
+)
 
-@api.get("/hello")
-def hello(request):
-    """
-    Minimalny test endpoint.
-    ---
-    returns: {"message": "Hello world!"}
-    """
-    return {"message": "Hello world!"}
+# Add routers
+api.add_router("/auth", auth_router, tags=["Authentication"])
+api.add_router("/sensors", sensors_router, tags=["Sensors & Readings"])

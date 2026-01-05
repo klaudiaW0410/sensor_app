@@ -1,26 +1,40 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./SensorDetail.css";
 
 
 export const Register = () => {
-    const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const onRegisterClick = () => {
-    if (!username || !email || !password) {
-      alert("Uzupełnij wszystkie pola");
+const onRegisterClick = async () => {
+  try {
+    const res = await fetch("http://localhost:8000/api/auth/register/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, email, password }),
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      alert(error.detail || "Register error");
       return;
     }
 
-    const user = { username, email };
-    localStorage.setItem("user", JSON.stringify(user));
+    const data = await res.json();
+    localStorage.setItem("token", data.token);
 
-    alert("Rejestracja zakończona sukcesem");
-    navigate("/");
-  };
+    alert("Registration successful");
+    navigate("/sensors");
+  } catch (error) {
+     console.error("Error during registration:", error);
+    alert("Server error");
+  }
+};
+
 
   return (
     <div className="container">

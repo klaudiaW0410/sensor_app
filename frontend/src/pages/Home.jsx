@@ -5,10 +5,31 @@ import "./Home.css";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async  (e) => {
     e.preventDefault();
-    console.log({ email, password });
-    // later: call login API
+    
+    try {
+        const response = await fetch("http://localhost:8000/api/auth/token/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (!response.ok) {
+            alert("Login failed");
+            return;
+        }
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
+        console.log("Login successful, token stored.");
+        window.location.href = "/sensors";
+        
+    } catch (error) {
+        console.error("Error during login:", error);
+        alert("An error occurred. Please try again.");
+    }
   };
 
   return (

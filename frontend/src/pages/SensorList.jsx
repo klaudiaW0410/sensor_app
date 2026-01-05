@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import mockData from "../../mockData.json";
+
 import "./Sensors.css";
 
 export const SensorList = () => {
+  const[sensors, setSensors] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);       
   const [filter, setFilter] = useState("");  
   const itemsPerPage = 2; 
 
-  const sensors = mockData.sensors;
+useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    fetch("http://localhost:8000/api/sensors/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Unauthorized");
+        return res.json();
+      })
+      .then((data) => setSensors(data))
+      .catch(() => alert("Please login again"));
+  }, []);
+
 
   const filteredSensors = sensors.filter(sensor =>
     sensor.name.toLowerCase().includes(filter.toLowerCase())

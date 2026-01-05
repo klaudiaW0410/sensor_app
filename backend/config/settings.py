@@ -47,17 +47,21 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'corsheaders',
     'sensors',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -153,3 +157,6 @@ SIMPLE_JWT = {
 
 # Base prefix for Django Ninja APIs
 NINJA_API_PREFIX = os.getenv('NINJA_API_PREFIX', '/api')
+
+# CORS (Cross-Origin Resource Sharing)
+CORS_ALLOW_ALL_ORIGINS = True

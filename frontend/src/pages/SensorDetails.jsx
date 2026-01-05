@@ -1,24 +1,81 @@
-import React, { useState } from "react";
+import { useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
+import {
+  Chart as ChartJS,
+  CategoryScale,   
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { Line } from "react-chartjs-2";
-import mockData from "../../mockData.json";
 import "./SensorDetail.css";
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 export const SensorDetail = () => {
   const { id } = useParams(); 
   const sensorId = Number(id);
 
-  const sensor = mockData.sensors.find(s => s.id === sensorId);
-
-  const readings = mockData.readings.filter(r => r.sensor_id === sensorId);
-
+  const [sensor, setSensor] = useState(null);
+  const [readings, setReadings] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
 
-  const filteredReadings = readings.filter(r => {
-    const readingDate = r.timestamp.slice(0, 10); // YYYY-MM-DD
-    return (!startDate || readingDate >= startDate) && (!endDate || readingDate <= endDate);
-  });
+  const token = localStorage.getItem("token");
+
+  useEffect(() =>{
+    fetch(`http://localhost:8000/api/sensors/${sensorId}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(response => response.json())
+      .then(data => setSensor(data))
+      .catch(err => console.error("Error fetching sensor:", err));
+  }, [sensorId, token]); 
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/api/sensors/${sensorId}/readings/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(res => res.json())
+      .then(data => setReadings(data))
+      .catch(err => console.error("Error fetching readings:", err));
+  }, [sensorId, token]);
+
+const filteredReadings = readings.filter(r => {
+  const readingDate = new Date(r.timestamp);
+
+  const start =
+    startDate
+      ? new Date(`${startDate}T${startTime || "00:00"}`)
+      : null;
+
+  const end =
+    endDate
+      ? new Date(`${endDate}T${endTime || "23:59"}`)
+      : null;
+
+  if (start && readingDate < start) return false;
+  if (end && readingDate > end) return false;
+
+  return true;
+});
+
 
   const data = {
     labels: filteredReadings.map(r => new Date(r.timestamp).toLocaleTimeString()),
@@ -35,9 +92,16 @@ export const SensorDetail = () => {
       },
     ],
   };
+  const options = {
+  responsive: true,
+  plugins: {
+    legend: { position: 'top' },
+    title: { display: true, text: 'Sensor Readings' },
+  },
+};
 
   return (
-    <div className="page">
+    <div className="details-container">
       <h1>{sensor?.name} Details</h1>
 
       <div className="date-filter">
@@ -48,16 +112,30 @@ export const SensorDetail = () => {
           onChange={e => setStartDate(e.target.value)}
         />
 
-        <label>End date:</label>
+        <label>Start time:</label>
         <input
-          type="date"
-          value={endDate}
-          onChange={e => setEndDate(e.target.value)}
+          type="time"
+          value={startTime}
+          onChange={e => setStartTime(e.target.value)}
         />
+
+        <label>End date:</label>
+          <input
+            type="date"
+            value={endDate}
+            onChange={e => setEndDate(e.target.value)}
+          />
+
+        <label>End time:</label>
+          <input
+            type="time"
+            value={endTime}
+            onChange={e => setEndTime(e.target.value)}
+          />
       </div>
 
-      <div className="chart-container">
-        <Line data={data} />
+    <div className="chart-container">
+        <Line data={data} options={options} />
       </div>
     </div>
   );
