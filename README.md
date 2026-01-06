@@ -61,7 +61,7 @@ While keeping terminal running with docker, open another terminal in new tab and
 docker-compose exec web python manage.py seed
 ```
 
-> Creates a `seed_user` (password `secret123`) and sample sensors/readings from CSV.
+> Creates a `seed_user` (password ``) and sample sensors/readings from CSV.
 
 ---
 
@@ -127,6 +127,14 @@ All endpoints are prefixed with `/api`.
 | `POST` | `/api/sensors/{sensor_id}/readings/` | Create reading |
 
 ---
+
+## Running tests
+
+Inside container:
+```bash
+ docker-compose exec web pytest -v
+```
+
 
 ## Notes
 
