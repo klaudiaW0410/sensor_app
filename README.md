@@ -43,6 +43,10 @@ docker-compose ps
 - [http://localhost:8000/api/docs](http://localhost:8000/api/docs)
 
 ---
+## Frontend Setup
+
+npm i
+npm run dev
 
 ## Database setup
 
@@ -52,6 +56,7 @@ docker-compose exec web python manage.py migrate
 ```
 
 ### Seed initial data
+While keeping terminal running with docker, open another terminal in new tab and do:
 ```bash
 docker-compose exec web python manage.py seed
 ```
