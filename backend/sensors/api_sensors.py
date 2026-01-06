@@ -22,7 +22,7 @@ auth = AuthBearer()
 sensors_router = Router()
 
 
-# ========== SENSOR ENDPOINTS ==========
+# SENSOR ENDPOINTS 
 
 @sensors_router.get("/", auth=auth, response=List[SensorOut])
 def list_sensors(request, page: int = 1, page_size: int = 10, q: str = None):
@@ -103,7 +103,7 @@ def delete_sensor(request, sensor_id: int):
     return 204, None
 
 
-# ========== READING ENDPOINTS ==========
+# READING ENDPOINTS
 
 @sensors_router.get("/{sensor_id}/readings/", auth=auth, response={200: List[ReadingOut], 404: ErrorOut})
 def list_readings(request, sensor_id: int, timestamp_from: str = None, timestamp_to: str = None):
