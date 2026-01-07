@@ -110,14 +110,14 @@ const options = {
     x: {
       ticks: {
         font: {
-          size: 12, // godziny
+          size: 12,
         },
       },
     },
     y: {
       ticks: {
         font: {
-          size: 14, // wartości temperatury / wilgotności
+          size: 14,
         },
       },
     },
