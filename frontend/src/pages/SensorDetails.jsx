@@ -2,7 +2,7 @@ import { useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
 import {
   Chart as ChartJS,
-  CategoryScale,   
+  CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
@@ -23,7 +23,7 @@ ChartJS.register(
   Legend
 );
 export const SensorDetail = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const sensorId = Number(id);
 
   const [sensor, setSensor] = useState(null);
@@ -44,7 +44,7 @@ export const SensorDetail = () => {
       .then(response => response.json())
       .then(data => setSensor(data))
       .catch(err => console.error("Error fetching sensor:", err));
-  }, [sensorId, token]); 
+  }, [sensorId, token]);
 
   useEffect(() => {
     fetch(`http://localhost:8000/api/sensors/${sensorId}/readings/`, {
@@ -92,13 +92,38 @@ const filteredReadings = readings.filter(r => {
       },
     ],
   };
-  const options = {
+const options = {
   responsive: true,
   plugins: {
-    legend: { position: 'top' },
-    title: { display: true, text: 'Sensor Readings' },
+    legend: {
+      labels: {
+        font: { size: 14 },
+      },
+    },
+    title: {
+      display: true,
+      text: 'Sensor Readings',
+      font: { size: 24 },
+    },
+  },
+  scales: {
+    x: {
+      ticks: {
+        font: {
+          size: 12, // godziny
+        },
+      },
+    },
+    y: {
+      ticks: {
+        font: {
+          size: 14, // wartości temperatury / wilgotności
+        },
+      },
+    },
   },
 };
+
 
   return (
     <div className="details-container">

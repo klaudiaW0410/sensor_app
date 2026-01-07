@@ -1,9 +1,10 @@
 .details-container {
   min-height: 90vh;
   padding: 2rem;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  
+  background: #f5f6f8;
+  border: solid black 1px;
+  border-radius: 1rem;
+  color: #333;
 }
 
 .content-wrapper {
@@ -14,16 +15,14 @@
 .details-container h1 {
   text-align: center;
   margin-bottom: 2rem;
-  color: white;
   font-size: 2.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .date-filter {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto 2rem auto;
   padding: 2rem;
   background: white;
@@ -60,8 +59,7 @@
 }
 
 .chart-container {
-  width: 100%;
-  max-width: 1000px;
+  width: 1000px;
   height: 500px;
   margin: 0 auto;
   padding: 2rem;
@@ -74,7 +72,7 @@
   .date-filter {
     grid-template-columns: 1fr;
   }
-  
+
   .chart-container {
     height: 350px;
     padding: 1rem;
